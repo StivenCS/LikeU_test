@@ -99,6 +99,245 @@
                     }
                 ]
             }
+        },
+        "/api/client/create": {
+            "post": {
+                "tags": [
+                    "clients"
+                ],
+                "summary": "Customer creation",
+                "description": "Customer creation",
+                "operationId": "client_create",
+                "requestBody": {
+                    "description": "information required for the client",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "name",
+                                    "identification",
+                                    "dateOfBirth"
+                                ],
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "format": "name",
+                                        "example": "like"
+                                    },
+                                    "identification": {
+                                        "type": "number",
+                                        "format": "identification",
+                                        "example": "123456"
+                                    },
+                                    "dateOfBirth": {
+                                        "type": "date",
+                                        "format": "dateOfBirth",
+                                        "example": "2020-02-10"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Customer creation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Customer created!!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/diary/create": {
+            "post": {
+                "tags": [
+                    "diary"
+                ],
+                "summary": "Diary creation",
+                "description": "Diary creation",
+                "operationId": "diary_create",
+                "requestBody": {
+                    "description": "information required for the diary",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "matter",
+                                    "date",
+                                    "status",
+                                    "client_id"
+                                ],
+                                "properties": {
+                                    "matter": {
+                                        "type": "string",
+                                        "format": "matter",
+                                        "example": "like"
+                                    },
+                                    "date": {
+                                        "type": "date",
+                                        "format": "date",
+                                        "example": "2020-12-01"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "format": "status",
+                                        "example": "Programada"
+                                    },
+                                    "client_id": {
+                                        "type": "number",
+                                        "format": "client_id",
+                                        "example": "1,2,3,4..."
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Customer creation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "sheduled!!"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
+        },
+        "/api/diary/update/{id}": {
+            "put": {
+                "tags": [
+                    "diary"
+                ],
+                "summary": "edit diary",
+                "description": "edit diary",
+                "operationId": "diary_update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "diary id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": "1"
+                    }
+                ],
+                "requestBody": {
+                    "description": "information required for update the diary",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "matter",
+                                    "date",
+                                    "status",
+                                    "client_id"
+                                ],
+                                "properties": {
+                                    "matter": {
+                                        "type": "string",
+                                        "format": "matter",
+                                        "example": "like"
+                                    },
+                                    "date": {
+                                        "type": "date",
+                                        "format": "date",
+                                        "example": "2020-12-01"
+                                    },
+                                    "status": {
+                                        "type": "string",
+                                        "format": "status",
+                                        "example": "Programada"
+                                    },
+                                    "client_id": {
+                                        "type": "number",
+                                        "format": "client_id",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Diary update"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "response",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Can't update the diary"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearer_token": []
+                    }
+                ]
+            }
         }
     },
     "components": {
