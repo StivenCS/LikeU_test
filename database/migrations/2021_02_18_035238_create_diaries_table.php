@@ -15,7 +15,7 @@ class CreateDiariesTable extends Migration
     {
         Schema::create('diaries', function (Blueprint $table) {
             $table->id();
-            $table->string('metter');
+            $table->string('matter');
             $table->date('date');
             $table->string('status');
             $table->unsignedBigInteger('client_id');

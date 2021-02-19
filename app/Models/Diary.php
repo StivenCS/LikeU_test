@@ -14,7 +14,8 @@ class Diary extends Model
     protected $fillable = [
         'matter',
         'date',
-        'status'
+        'status',
+        'client_id'
     ];
 
     public function client(){
